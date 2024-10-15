@@ -10,10 +10,10 @@ st.title("Conversión de Texto a Audio")
 
 
 try:
-    image = Image.open('Textoasonido/Nuki.jpg')  
+    image = Image.open('Textoasonido/Nuki.png')  
     st.image(image, width=350)
 except FileNotFoundError:
-    st.error("Imagen 'Nuki.jpg' no encontrada. Asegúrate de que el archivo esté en la ubicación correcta.")
+    st.error("Imagen 'Nuki.png' no encontrada. Asegúrate de que el archivo esté en la ubicación correcta.")
 
 with st.sidebar:
     st.subheader("Escribe y/o selecciona texto para ser escuchado.")
