@@ -10,7 +10,7 @@ st.title("Conversión de Texto a Audio")
 
 # Intenta cargar la imagen
 try:
-    image = Image.open('masmellow.jpg')
+   image = Image.open('Textoasonido/masmellow.jpg')
     st.image(image, width=350)
 except FileNotFoundError:
     st.error("Imagen 'masmellow.jpg' no encontrada. Asegúrate de que el archivo esté en la ubicación correcta.")
