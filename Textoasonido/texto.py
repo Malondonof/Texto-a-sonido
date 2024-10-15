@@ -8,12 +8,21 @@ import base64
 
 st.title("Conversión de Texto a Audio")
 
-
+# Intenta cargar la imagen principal de Nuki
 try:
-    image = Image.open('Textoasonido/Nuki.png')  
-    st.image(image, width=350)
+    image_nuki = Image.open('Textoasonido/Nuki.png')  
+    st.image(image_nuki, width=350)
 except FileNotFoundError:
     st.error("Imagen 'Nuki.png' no encontrada. Asegúrate de que el archivo esté en la ubicación correcta.")
+
+# Carga la imagen pequeña en la parte superior derecha
+col1, col2 = st.columns([3, 1])
+with col2:
+    try:
+        image_audio = Image.open('Textoasonido/text_to_audio.png')  
+        st.image(image_audio, width=100)  # Tamaño menor
+    except FileNotFoundError:
+        st.error("Imagen 'text_to_audio.png' no encontrada. Asegúrate de que el archivo esté en la ubicación correcta.")
 
 with st.sidebar:
     st.subheader("Escribe y/o selecciona texto para ser escuchado.")
@@ -29,21 +38,21 @@ st.write('Nuki, un curioso mapache, encontró un día una misteriosa botella con
 st.markdown("¿Quieres escucharlo? Copia el texto")
 text = st.text_area("Ingrese el texto a escuchar.")
 
-
+# Selección de lenguaje
 option_lang = st.selectbox(
     "Selecciona el lenguaje",
     ("Español", "English")
 )
 lg = 'es' if option_lang == "Español" else 'en'
 
-
+# Función para convertir texto a voz
 def text_to_speech(text, lg):
     tts = gTTS(text, lang=lg)
     my_file_name = text[0:20].replace(" ", "_") if len(text) >= 20 else "audio"
     tts.save(f"temp/{my_file_name}.mp3")
     return my_file_name
 
-
+# Botón para convertir el texto a audio
 if st.button("Convertir a Audio"):
     if text:
         result = text_to_speech(text, lg)
@@ -54,7 +63,7 @@ if st.button("Convertir a Audio"):
         st.markdown("## Tu audio:")
         st.audio(audio_bytes, format="audio/mp3", start_time=0)
 
-      
+        # Descarga del archivo de audio
         def get_binary_file_downloader_html(bin_file, file_label='File'):
             with open(bin_file, "rb") as f:
                 data = f.read()
@@ -66,7 +75,7 @@ if st.button("Convertir a Audio"):
     else:
         st.error("Por favor, ingresa un texto para convertir a audio.")
 
-
+# Función para eliminar archivos antiguos de la carpeta "temp"
 def remove_files(n):
     mp3_files = glob.glob("temp/*.mp3")
     if mp3_files:
@@ -77,5 +86,5 @@ def remove_files(n):
                 os.remove(f)
                 print(f"Deleted {f}")
 
-
+# Elimina archivos de audio más antiguos de 7 días
 remove_files(7)
