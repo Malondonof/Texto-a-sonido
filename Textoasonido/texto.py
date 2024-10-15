@@ -23,11 +23,7 @@ if not os.path.exists("temp"):
     os.mkdir("temp")
 
 st.subheader("Una pequeña Fábula.")
-st.write('Marshmello, un DJ que nunca hablaba, usaba su música para comunicarse con el mundo. '  
-         'Un día, el pájaro Melodía le preguntó por qué no usaba palabras, y Marshmello respondió con una hermosa canción. ' 
-         'Al escucharla, Melodía entendió que no todos necesitan hablar para transmitir sus sentimientos. '  
-         'La música de Marshmello tocaba el corazón de todos, mostrando que existen muchas formas de expresarse. ' 
-         'Mosy.'
+st.write('Nuki, un curioso mapache, encontró un día una misteriosa botella con un mensaje que le hablaba de la "Luna Plateada" y de un gran tesoro. Decidido a encontrarlo, preguntó a los animales del bosque, pero nadie sabía qué era. Tras días de búsqueda, Nuki vio la luz de la luna reflejada en el lago, brillando como plata, y se dio cuenta de que el verdadero tesoro era la belleza de la naturaleza. Desde entonces, dejó de buscar riquezas materiales y disfrutó cada día de su hogar, compartiendo su alegría con los demás animales del bosque.'
         )
 
 st.markdown("¿Quieres escucharlo? Copia el texto")
